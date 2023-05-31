@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Sauce Demo" parallel="tests" thread-count="7">
+    <parameter name="browser" value="firefox"/>
+    <test name="Login standard user">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="url" value="https://www.saucedemo.com/inventory.html"/>
+        <parameter name="testType" value="positive"/>
+        <classes>
+            <class name="DemoTestNG"/>
+        </classes>
+    </test>
+    <test name="Login wrong username">
+        <parameter name="username" value="48121861"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="url" value="https://www.saucedemo.com/"/>
+        <parameter name="errorMessage" value="Epic sadface: Username and password do not match any user in this service"></parameter>
+        <parameter name="testType" value="negative"/>
+        <classes>
+            <class name="DemoTestNG"/>
+        </classes>
+    </test>
+    <test name="Login wrong password">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce2"/>
+        <parameter name="url" value="https://www.saucedemo.com/"/>
+        <parameter name="errorMessage" value="Epic sadface: Username and password do not match any user in this service"></parameter>
+        <parameter name="testType" value="negative"/>
+        <classes>
+            <class name="DemoTestNG"/>
+        </classes>
+    </test>
+    <test name="Login wrong username and password">
+        <parameter name="username" value="standard_user321"/>
+        <parameter name="password" value="secret_sauce2"/>
+        <parameter name="url" value="https://www.saucedemo.com/"/>
+        <parameter name="errorMessage" value="Epic sadface: Username and password do not match any user in this service"></parameter>
+        <parameter name="testType" value="negative"/>
+        <classes>
+            <class name="DemoTestNG"/>
+        </classes>
+    </test>
+    <test name="Login without username">
+        <parameter name="username" value="empty"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="url" value="https://www.saucedemo.com/"/>
+        <parameter name="errorMessage" value="Epic sadface: Username is required"/>
+        <parameter name="testType" value="negative"/>
+        <classes>
+            <class name="DemoTestNG"/>
+        </classes>
+    </test>
+    <test name="Login without password">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="empty"/>
+        <parameter name="url" value="https://www.saucedemo.com/"/>
+        <parameter name="errorMessage" value="Epic sadface: Password is required"/>
+        <parameter name="testType" value="negative"/>
+        <classes>
+            <class name="DemoTestNG"/>
+        </classes>
+    </test>
+    <test name="Login without username and password">
+        <parameter name="username" value="empty"/>
+        <parameter name="password" value="empty"/>
+        <parameter name="url" value="https://www.saucedemo.com/"/>
+        <parameter name="errorMessage" value="Epic sadface: Username is required"/>
+        <parameter name="testType" value="negative"/>
+        <classes>
+            <class name="DemoTestNG"/>
+        </classes>
+    </test>
+</suite>
